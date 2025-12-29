@@ -1,10 +1,11 @@
-<script setup lang="ts"></script>
-
 <template>
-  <h1 class="text-3xl font-bold text-blue-600">
-    Tailwind está vivo 🚀
-  </h1>
+  <Login />
 </template>
 
+<script setup lang="ts">
+import Login from './views/Login.vue'
+</script>
 
-<style scoped></style>
+<style scoped>
+/* Estilos globales de App.vue o del layout */
+</style>
