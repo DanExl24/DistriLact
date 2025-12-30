@@ -1,9 +1,19 @@
 <template>
-  <Login />
+  <Login  />
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import Login from './views/Login.vue'
+export default{
+  data(){
+    return{
+
+    }
+  },
+  components : {
+    Login
+  }
+}
 </script>
 
 <style scoped>
