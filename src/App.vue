@@ -1,19 +1,10 @@
 <template>
-  <Login  />
+  <main class="min-h-screen bg-gray-100 flex items-center justify-center">
+    <RouterView />
+  </main>
 </template>
 
 <script lang="ts">
-import Login from './views/Login.vue'
-export default{
-  data(){
-    return{
-
-    }
-  },
-  components : {
-    Login
-  }
-}
 </script>
 
 <style scoped>

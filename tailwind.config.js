@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        quicksand: ['Quicksand', 'sans-serif'],
+        robotoSlab: ['Roboto Slab', 'serif'],
+      },
       colors: {
         royalBlue: 'rgb(18, 62, 157)',
       },
