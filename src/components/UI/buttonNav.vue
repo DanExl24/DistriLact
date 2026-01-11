@@ -1,22 +1,24 @@
 <template>
-        <button class="w-full shadow-lg text-sm font-quicksand p-4 w-full rounded-lg font-semibold px-1 py-3 transition duration-600 ease-in" :class="[BgVariant,TextVariant]">
+        <RouterLink class="shadow-lg text-sm font-quicksand p-4 w-full rounded-lg font-semibold px-1 py-3 transition duration-600 ease-in cursor-pointer" :to="to" :class="[btnClass,variant]">
             {{ buttonTitle }}
             <img v-if="buttonImage" :src="buttonImage" class="h-[20px]">
-        </button>
+        </RouterLink>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';
 
     const props = defineProps<{
         buttonTitle:string,
-        background? : 'royalBlue' | 'white',
-        text? : 'royalBlue' | 'white' | 'black',
-        buttonImage:string,
+        btnClass?: string,
+        buttonImage?:string,
+        to : string,
+        variant?:'blue'|'white'
     }>()
-    const BgVariant = computed(()=>{return {royalBlue : 'bg-royalBlue hover:bg-blue-800',white : 'bg-white hover:bg-gray-200'}[props.background ?? 'royalBlue']
-    })
 
-    const TextVariant = computed(()=>{return{royalBlue:'text-royalBlue',white:'text-white',black:'text-black'}[props.text ?? 'black']
+    const variant = computed(()=>{
+        if (props.variant == 'blue') return 'bg-royalBlue text-white hover:bg-[rgb(29, 74, 189)] hover:scale-[1.02]';
+        if (props.variant == 'white') return 'bg-white text-royalBlue hover:bg-gray-200 hover:scale-[1.02]'
+        else return 'bg-royalBlue text-white hover:bg-[rgb(29, 74, 189)] hover:scale-[1.02]'
     })
 </script>
 <style>
