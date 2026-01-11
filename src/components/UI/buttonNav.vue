@@ -1,5 +1,5 @@
 <template>
-        <RouterLink class="shadow-lg text-sm font-quicksand p-4 w-full rounded-lg font-semibold px-1 py-3 transition duration-600 ease-in cursor-pointer" :to="to" :class="[btnClass,variant]">
+        <RouterLink class="shadow-lg text-sm font-quicksand w-full rounded-lg font-semibold px-1 py-4 transition duration-600 ease-in cursor-pointer" :to="to" :class="[btnClass,variant]">
             {{ buttonTitle }}
             <img v-if="buttonImage" :src="buttonImage" class="h-[20px]">
         </RouterLink>

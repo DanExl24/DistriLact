@@ -4,7 +4,7 @@
     :name="name" 
     :id="id" 
     :placeholder="placeholder"
-    class="bg-gray-100 text-black p-[0.95rem] rounded w-full font-robotoSlab transition duration-600 ease-in placeholder-gray-600 focus:outline-none transform hover:scale-[1.02]" 
+    class="bg-gray-100 text-black p-[0.95rem] text-sm rounded w-full font-robotoSlab transition duration-600 ease-in placeholder-gray-600 focus:outline-none transform hover:scale-[1.02]" 
     >
 </template>
 <script setup lang="ts">

@@ -33,10 +33,10 @@
 <script setup lang="ts">
     import Logo from '@/assets/Logo/Logo-DistriLact.png'
     import blueCart from '@/assets/Icons/blue-cart.png'
-    import ButtonNav from '../UI/ButtonNav.vue';
     import DropDown from '../UI/DropDown.vue';
     import DropDownTitle from '../UI/DropDownTitle.vue';
     import DropDownItem from '../UI/DropDownItem.vue';
+    import ButtonNav from '../UI/ButtonNav.vue';
 </script>
 <style>
 </style>

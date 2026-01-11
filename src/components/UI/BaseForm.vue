@@ -4,7 +4,7 @@
     :method="method"
     :fade="fade"
     :class="[formClass,
-            'bg-white h-auto text-center p-4 border rounded-lg flex items-center flex-col shadow-xl', 
+            'bg-white h-auto text-center p-4 border rounded-lg flex items-center flex-col shadow-xl w-1/4 gap-4', 
             props.fade ? 'transition-opacity duration-1000' : 'opacity-100']">
         <slot></slot>
     </form>
