@@ -2,9 +2,11 @@
   <div class="login flex justify-center items-center" :style="{ backgroundImage: `url(${loginImg})` }">
     <BaseForm method="GET">
       <h2 class="font-bold font-robotoSlab text-2xl mb-10 mt-1">Crea una Cuenta</h2>
-      <BaseInput type="email" name="userEmail" placeholder="Correo Electronico" />
-      <BaseInput type="password" name="userEmail" placeholder="Correo Electronico" />
-      <ButtonNav button-title="Iniciar Sesion" variant="blue" to="/"/>
+      <BaseInput validate="name" type="text" name="userName" placeholder="Nombre de Usuario" />
+      <BaseInput validate="email" type="email" name="userEmail" placeholder="Correo Electronico" />
+      <BaseInput type="password" name="userPassword" placeholder="Contraseña" />
+      <BaseInput validate="telephone" type="telephone" name="userTelephone" placeholder="Telefono (opcional)" />
+      <ButtonNav button-title="Registrarse" variant="blue" to="/"/>
       <hr class="w-11/12  border-gray-500 my-5">
       <p class="font-robotoSlab text-sm">
           Ya tienes una cuenta?

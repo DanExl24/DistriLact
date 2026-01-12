@@ -2,7 +2,7 @@
   <div class="login flex justify-center items-center" :style="{ backgroundImage: `url(${loginImg})` }">
     <BaseForm method="GET">
       <h2 class="font-bold font-robotoSlab text-2xl mb-10 mt-1">Inicia Sesion</h2>
-      <BaseInput type="email" name="userEmail" placeholder="Correo Electronico" />
+      <BaseInput validate="email" type="email" name="userEmail" placeholder="Correo Electronico" />
       <BaseInput type="password" name="userEmail" placeholder="Correo Electronico" />
       <p class="text-right text-sm self-end mt-0 mb-5 underline font-semibold font-robotoSlab">
           <RouterLink to="/Missing">

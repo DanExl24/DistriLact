@@ -10,7 +10,7 @@
     </form>
 </template>
 <script setup lang="ts">
-    import {ref,onMounted} from 'vue';
+    import {ref,onMounted, computed} from 'vue';
 
     const props = defineProps<{
         method:'POST' | 'GET',

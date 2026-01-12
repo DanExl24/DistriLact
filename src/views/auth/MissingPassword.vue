@@ -5,8 +5,15 @@
       <p class="text-left text-red-500 text-normal self-end mt-0 mb-2 font-semibold font-robotoSlab">
         Escribe tu correo electronico para que podamos enviarte un mensaje con las instrucciones
       </p>
-      <BaseInput type="email" name="userEmail" placeholder="Correo Electronico" />
+      <BaseInput validate="email" type="email" name="userEmail" placeholder="Correo Electronico" />
       <ButtonNav button-title="Recuperar Cuenta" variant="blue" to="/"/>
+      <hr class="w-11/12  border-gray-500 my-5">
+      <p class="font-robotoSlab text-sm">
+          Recordaste tu contraseña?
+      <RouterLink to="/Login" class="text-royalBlue font-semibold hover:underline">
+      Inicia Sesion.
+      </RouterLink>
+      </p>
     </BaseForm>
   </div>
 </template>
