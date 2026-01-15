@@ -2,9 +2,9 @@ import Router from 'express'
 
 const router = Router()
 
-router.get('/ping',(request,response)=>{
+router.get('/test',(request,response)=>{
     response.json({
-        messsage:'pong desde express jaja'
+        messsage:'Hola a express y a mi'
     })
 })
 

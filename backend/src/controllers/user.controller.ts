@@ -1,4 +1,4 @@
-import { Request,Response } from "express"
+import { Request,response,Response } from "express"
 import { pool } from '../db/pool'
 
 export const createUser = async (request: Request, response: Response) =>{
@@ -15,3 +15,4 @@ export const createUser = async (request: Request, response: Response) =>{
         response.status(500).json({message:"Hay un error"})
     }
 }
+

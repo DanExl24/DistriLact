@@ -1,7 +1,7 @@
 <template>
   <div class="login flex justify-center items-center" :style="{ backgroundImage: `url(${loginImg})` }">
     <BaseForm @submit="submit" method="POST">
-      <h2 class="font-bold font-robotoSlab text-2xl mb-10 mt-1">Crea una Cuenta</h2>
+      <h2 class="font-bold font-robotoSlab text-2x1 mb-10 mt-1">Crea una cuenta</h2>
       <BaseInput validate="name" type="text" v-model="userName" placeholder="Nombre de Usuario" />
       <BaseInput validate="email" type="email" v-model="userEmail" placeholder="Correo Electronico" />
       <BaseInput type="password" v-model="userPassword" placeholder="Contraseña" />
@@ -36,12 +36,6 @@ const userTelephone = ref('')
 const router = useRouter()
 
 const submit = async () => {
-console.log({
-  name: userName.value,
-  email: userEmail.value,
-  password: userPassword.value,
-  telephone: userTelephone.value
-})
 try{
   const response = await fetch('http://localhost:3000/api/users',{
     method : 'POST',
