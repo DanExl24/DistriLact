@@ -3,7 +3,9 @@ import { pool } from '../db/pool'
 
 export const createUser = async (request: Request, response: Response) =>{
     try{
-        const {name,email,password,telephone} = request.body
+        const {name,email,password} = request.body
+
+        const telephone = request.body.telephone || null
 
         if(!name || !email || !password) return response.status(400).json({message:'Datos incompletos'})
 

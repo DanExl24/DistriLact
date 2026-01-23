@@ -9,7 +9,7 @@
               Olvide Mi Contraseña
           </RouterLink>
       </p>
-      <ButtonBase btn-class="bg-royalBlue text-white" btn-title="Registrarse" type="submit"/>
+      <ButtonBase variant="blue" btn-title="Registrarse" type="submit"/>
       <hr class="w-11/12  border-gray-500 my-5">
       <p class="font-robotoSlab text-sm">
           No tienes una cuenta?

@@ -25,7 +25,7 @@
     const onInput = (e:Event) => {
         const inputValue = (e.target as HTMLInputElement).value
         emit('update:modelValue', inputValue)
-        let regex
+        let regex: RegExp | null = null
         switch(props.validate){
             case 'name':
                 regex = /^[a-zA-Z0-9]+$/
