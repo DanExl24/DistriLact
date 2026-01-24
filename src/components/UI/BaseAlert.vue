@@ -1,36 +1,27 @@
 <template>
     <Transition name="alert">
-    <div v-if="show" :class="[AlertClass,'absolute top-2 right-0 px-5 py-3 font-quicksand rounded-lg bg-white']">
-        <span class="p-0 m-0 inline">{{ AlertIcon }}</span> <p class="inline font-semibold">{{ title }}</p>
+    <div v-if="alert.show" :class="[AlertClass,'absolute top-2 right-0 px-5 py-3 font-quicksand rounded-lg bg-white']">
+        <span class="p-0 m-0 inline">{{ AlertIcon }}</span> <p class="inline font-semibold">{{ alert.title }}</p>
     </div>
     </Transition>
 </template>
 <script setup lang="ts"> 
-import { computed,watch } from 'vue';
+import { useAlertStore } from '@/stores/alert';
+import { computed } from 'vue';
 
-    const props = withDefaults(defineProps<{
-    title: string
-    AlertClass?: string
-    AlertSignal?: 'red' | 'green'
-    show?: boolean
-    }>(), {
-    show: false
-    })
+const alert = useAlertStore()
 
-const emit = defineEmits(['close'])
-
-watch(() => props.show,(value) => {
-    if (value) {
-      setTimeout(() => {
-        emit('close')
-      }, 2000)
-    }
-  }
-)
+const props = withDefaults(defineProps<{
+title?: string
+AlertClass?: string
+show?: boolean
+}>(), {
+show: false
+})
 
 
 const AlertIcon = computed(()=>{
-    if(props.AlertSignal=='red') return '❌'
+    if(alert.signal=='red') return '❌'
     else return '✅'
 })
 

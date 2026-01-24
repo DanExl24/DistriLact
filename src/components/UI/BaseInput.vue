@@ -11,38 +11,46 @@
     >
 </template>
 <script setup lang="ts">
-    import {ref} from 'vue';
-    const props = defineProps<{
-        type:'text' | 'email' | 'password' | 'number' | 'telephone',
-        id?:string,
-        placeholder:string,
-        validate?:'name' | 'email'  | 'telephone',
-        modelValue:string
-    }>()
-    const emit = defineEmits<{ (e: 'update:modelValue', value: string): void }>()
-    const borderClass = ref('')
+import {ref,watch} from 'vue';
+const props = defineProps<{
+    type:'text' | 'email' | 'password' | 'number' | 'telephone',
+    id?:string,
+    placeholder:string,
+    validate?:'name' | 'email'  | 'telephone',
+    modelValue:string,
+}>()
+const emit = defineEmits<{ (e: 'update:modelValue', value: string): void }>()
+const borderClass = ref('')
 
-    const onInput = (e:Event) => {
-        const inputValue = (e.target as HTMLInputElement).value
-        emit('update:modelValue', inputValue)
-        let regex: RegExp | null = null
-        switch(props.validate){
-            case 'name':
-                regex = /^[a-zA-Z0-9]+$/
-                regex.test(inputValue) ? borderClass.value = 'border-green-500' : borderClass.value = 'border-red-500'
-            break;
-            case 'email':
-                regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-                regex.test(inputValue) ? borderClass.value = 'border-green-500' : borderClass.value = 'border-red-500'
-            break;
-            case 'telephone':
-                regex = /^\d{10}$/
-                regex.test(inputValue) ? borderClass.value = 'border-green-500' : borderClass.value = 'border-red-500'
-            break;
-            default:
-                borderClass.value = 'border-gray-200'
-        }
+
+
+const onInput = (e:Event) => {
+    const inputValue = (e.target as HTMLInputElement).value
+    emit('update:modelValue', inputValue)
+
+    if(inputValue == ''){
+        borderClass.value = 'border-red-500'
+        return
     }
+
+    let regex: RegExp | null = null
+    switch(props.validate){
+        case 'name':
+            regex = /^[a-zA-Z0-9]+$/
+            regex.test(inputValue) ? borderClass.value = 'border-green-500' : borderClass.value = 'border-red-500'
+        break;
+        case 'email':
+            regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+            regex.test(inputValue) ? borderClass.value = 'border-green-500' : borderClass.value = 'border-red-500'
+        break;
+        case 'telephone':
+            regex = /^\d{10}$/
+            regex.test(inputValue) ? borderClass.value = 'border-green-500' : borderClass.value = 'border-red-500'
+        break;
+        default:
+            borderClass.value = 'border-gray-200'
+    }
+}
 
 </script>
 <style scoped>

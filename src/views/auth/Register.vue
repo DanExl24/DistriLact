@@ -1,11 +1,11 @@
 <template>
   <div class="login flex justify-center items-center relative overflow-hidden" :style="{ backgroundImage: `url(${loginImg})` }">
-    <BaseAlert :show="show" @close= 'show = false' :title="AlertTitle" :AlertSignal="AlertSignal"/>
+    <BaseAlert/>
     <BaseForm @submit="submit" method="POST">
       <h2 class="font-bold font-robotoSlab text-2xl mb-10 mt-1">Crea una cuenta</h2>
-      <BaseInput validate="name" type="text" v-model="userName" placeholder="Nombre de Usuario" />
-      <BaseInput validate="email" type="email" v-model="userEmail" placeholder="Correo Electronico" />
-      <BaseInput type="password" v-model="userPassword" placeholder="Contraseña" />
+      <BaseInput validate="name" type="text" v-model="userName" placeholder="Nombre de Usuario *" />
+      <BaseInput validate="email" type="email" v-model="userEmail" placeholder="Correo Electronico *" />
+      <BaseInput type="password" v-model="userPassword" placeholder="Contraseña *" />
       <BaseInput validate="telephone" type="telephone" v-model="userTelephone" placeholder="Telefono (opcional)" />
       <ButtonBase variant="blue" btn-title="Registrarse" type="submit"/>
       <hr class="w-11/12  border-gray-500 my-5">
@@ -28,6 +28,7 @@ import BaseForm from '@/components/UI/BaseForm.vue';
 import BaseInput from '@/components/UI/BaseInput.vue';
 import ButtonBase from '@/components/UI/ButtonBase.vue';
 import BaseAlert from '@/components/UI/BaseAlert.vue';
+import { useAlertStore } from '@/stores/alert';
 // Campos
 const userName = ref('')
 const userEmail = ref('')
@@ -37,19 +38,21 @@ const userTelephone = ref('')
 const router = useRouter()
 
 //Mensaje de advertencia
-const show = ref(false)
-const AlertTitle = ref('')
-const AlertSignal = ref<'red' | 'green'>('green')
+const alert = useAlertStore()
+
+// array de inputs
+const inputs  = [userName,userEmail,userPassword]
 
 const submit = async () => {
 try{
-
-  if(userName.value=='' || userEmail.value=='' || userPassword.value==''){
-      show.value = true
-      AlertTitle.value = 'Rellene los campos obligatorios'
-      AlertSignal.value='red'
+    for(const input of inputs){
+      if(input.value==''){
+      alert.trigger('Rellene los campos obligatorios','red')
+      alert.close()
       return
-  }
+    }
+    }
+
   const response = await fetch('http://localhost:3000/api/users',{
     method : 'POST',
     headers : {'Content-Type' : 'application/json'},
@@ -63,16 +66,15 @@ try{
   const data = await response.json()
   console.log(data)
   if(response.ok){
-      show.value = true
-      AlertTitle.value = 'Registro Exitoso'
-      AlertSignal.value='green'
+      alert.trigger('Registro Exitoso','green')
+      alert.close()
       setTimeout(() => {
             router.push('/')
-      }, 1500)
+      }, 2500)
   }
   else{
-      AlertTitle.value = 'Credenciales Incorrectas'
-      AlertSignal.value='red'
+      alert.trigger('Credenciales Incorrectas','red')
+      alert.close()
     console.error(data.message)
   }
 } catch(error) {
